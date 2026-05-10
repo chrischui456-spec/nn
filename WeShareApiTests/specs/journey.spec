@@ -5,10 +5,14 @@
 * Login with email "student1@wethinkcode.co.za"
 * Create expense for personId "1" description "Journey expense" amount "200" date "01/05/2026"
 * Create request for last created expense fromPersonId "1" toPersonId "3" amount "100" to be paid by "05/05/2026"
+
+* Login with email "student3@wethinkcode.co.za"
 * Pay payment request for last created request amount "100"
-* Verify expense nett amount is "100"
 * Verify payment request is paid
 * Verify payment exists for person "3"
+
+* Login with email "student1@wethinkcode.co.za"
+* Verify expense nett amount is "100"
 
 
 
@@ -30,7 +34,7 @@
 * Create request for last created expense fromPersonId "1" toPersonId "2" amount "400" to be paid by "16/05/2026"
 * Create request for last created expense fromPersonId "1" toPersonId "3" amount "500" to be paid by "16/05/2026"
 
-* Verify expense nett amount is "300"
+* Verify expense nett amount is "1200"
 
 * Login with email "student2@wethinkcode.co.za"
 * Pay payment request for last created request amount "400"

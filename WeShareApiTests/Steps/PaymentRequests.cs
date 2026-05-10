@@ -31,6 +31,8 @@ namespace Applications.Weshare.Steps
 
             paymentRequestDTO = _payment.CreatePaymentRequest(newPaymentRequestDTO);
             StepsHelper.LastCreatedPaymentRequestId = paymentRequestDTO.Id;
+            StepsHelper.LastToPersonId = toPersonId;
+            StepsHelper.PaymentRequestsByToPersonId[toPersonId] = paymentRequestDTO.Id;
             
         }
 
@@ -48,6 +50,8 @@ namespace Applications.Weshare.Steps
 
             paymentRequestDTO = _payment.CreatePaymentRequest(newPaymentRequestDTO);
             StepsHelper.LastCreatedPaymentRequestId = paymentRequestDTO.Id;
+            StepsHelper.LastToPersonId = toPersonId;
+            StepsHelper.PaymentRequestsByToPersonId[toPersonId] = paymentRequestDTO.Id;
         }
 
 

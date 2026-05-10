@@ -68,8 +68,9 @@
 
 ## Pay payment request twice
 
-* Pay payment request for last created request amount "100"
-* Attempt pay payment request for last created request amount "100"
+* Login with email "student3@wethinkcode.co.za"
+* Pay payment request for last created request amount "50"
+* Attempt pay payment request for last created request amount "50"
 * Verify status code "400"
 * Verify error message "Payment request has already been paid"
 

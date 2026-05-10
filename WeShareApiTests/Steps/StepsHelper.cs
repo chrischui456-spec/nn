@@ -15,6 +15,10 @@ namespace Applications.Weshare.Steps
         public static Dictionary<string, Person> CapturedUsers { get; set; } = new Dictionary<string, Person>();
         public static Person CurrentLoggedInUser { get; set; }
         public static int CurrentLoggedInPersonId { get; set; }
+        public static int LastToPersonId { get; set; }
+        
+        // Store payment requests by toPersonId (beneficiary)
+        public static Dictionary<int, int> PaymentRequestsByToPersonId { get; set; } = new Dictionary<int, int>();
         
         // Email to PersonId mapping
         public static Dictionary<string, int> EmailToPersonIdMap { get; set; } = new Dictionary<string, int>()

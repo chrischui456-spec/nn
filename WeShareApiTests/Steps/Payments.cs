@@ -32,9 +32,14 @@ namespace Applications.Weshare.Steps
         [Step("Pay payment request for last created request amount <amount>")]
         public void PayPaymentRequestForLastCreatedRequestAmount(int amount)
         {
-            var paymentRequestId = StepsHelper.LastCreatedPaymentRequestId;
             var expenseId = StepsHelper.LastCreatedExpenseId;
-            var payingPersonId = StepsHelper.CurrentLoggedInPersonId > 0 ? StepsHelper.CurrentLoggedInPersonId : 3;
+            var payingPersonId = StepsHelper.CurrentLoggedInPersonId;
+            
+            // Get the payment request ID for the currently logged-in person
+            var paymentRequestId = StepsHelper.PaymentRequestsByToPersonId.ContainsKey(payingPersonId)
+                ? StepsHelper.PaymentRequestsByToPersonId[payingPersonId]
+                : StepsHelper.LastCreatedPaymentRequestId;
+                
             NewPaymentDTO newPaymentDTO = new NewPaymentDTO(
                 expenseId: expenseId,
                 paymentRequestId: paymentRequestId,
@@ -46,9 +51,14 @@ namespace Applications.Weshare.Steps
         [Step("Attempt pay payment request for last created request amount <amount>")]
         public void AttemptPayPaymentRequestForLastCreatedRequestAmount(int amount)
         {
-            var paymentRequestId = StepsHelper.LastCreatedPaymentRequestId;
             var expenseId = StepsHelper.LastCreatedExpenseId;
-            var payingPersonId = StepsHelper.CurrentLoggedInPersonId > 0 ? StepsHelper.CurrentLoggedInPersonId : 3;
+            var payingPersonId = StepsHelper.CurrentLoggedInPersonId;
+            
+            // Get the payment request ID for the currently logged-in person
+            var paymentRequestId = StepsHelper.PaymentRequestsByToPersonId.ContainsKey(payingPersonId)
+                ? StepsHelper.PaymentRequestsByToPersonId[payingPersonId]
+                : StepsHelper.LastCreatedPaymentRequestId;
+                
             NewPaymentDTO newPaymentDTO = new NewPaymentDTO(
                 expenseId: expenseId,
                 paymentRequestId: paymentRequestId,
@@ -96,10 +106,17 @@ namespace Applications.Weshare.Steps
             paymentDTO.ExpenseId.Should().Be(actualExpenseId);
         }
 
+        [Step("Verify payment exists for person <personId>")]
+        public void VerifyPaymentExistsForPerson(string personId)
+        {
+            int id = int.Parse(personId);
+            listPaymentDTO = _payments.FindPaymentsMadeByPerson(id) ?? new List<PaymentDTO>();
+            listPaymentDTO.Should().NotBeEmpty();
+        }
+
         [Step("Verify payment created a new expense")]
         public void VerifyPaymentCreatedANewExpense()
         {
-
             paymentDTO.ExpenseId.Should().NotBe(StepsHelper.LastCreatedExpenseId);
         }
 
@@ -143,13 +160,6 @@ namespace Applications.Weshare.Steps
             CommonSteps.LastApiException = action.Should().Throw<ApiException>().Which;
         }
 
-
-        [Step("Verify payment exists for person <personId>")]
-        public void VerifyPaymentExistsForPerson(int personId)
-        {
-            listPaymentDTO = _payments.FindPaymentsMadeByPerson(personId) ?? new List<PaymentDTO>();
-            listPaymentDTO.Should().NotBeEmpty("Payment should exist for person " + personId);
-        }
 
     }
 }

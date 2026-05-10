@@ -58,11 +58,25 @@ namespace Applications.Weshare.Steps
             person.Email.Should().NotBeNullOrEmpty();
         }
 
-        [Step("Capture logged in user as <name>")]
-        public void CaptureLoggedInUserAs(string name)
+        [Step("Capture logged in user as Student1")]
+        public void CaptureLoggedInUserAsStudent1()
         {
             person.Should().NotBeNull("A user must be logged in before capturing");
-            StepsHelper.CapturedUsers[name] = person;
+            StepsHelper.CapturedUsers["Student1"] = person;
+        }
+
+        [Step("Capture logged in user as Student2")]
+        public void CaptureLoggedInUserAsStudent2()
+        {
+            person.Should().NotBeNull("A user must be logged in before capturing");
+            StepsHelper.CapturedUsers["Student2"] = person;
+        }
+
+        [Step("Capture logged in user as Student3")]
+        public void CaptureLoggedInUserAsStudent3()
+        {
+            person.Should().NotBeNull("A user must be logged in before capturing");
+            StepsHelper.CapturedUsers["Student3"] = person;
         }
         [Step("Login with empty email")]
         public void LoginWithEmptyEmail()
@@ -71,6 +85,7 @@ namespace Applications.Weshare.Steps
             Action action = () => _people.Login(loginDTO);
 
             lastException = action.Should().Throw<ApiException>().Which;
+            CommonSteps.LastApiException = lastException;
         }
 
         [Step("Login with invalid email <email>")]
@@ -80,6 +95,7 @@ namespace Applications.Weshare.Steps
             Action action = () => _people.Login(loginDTO);
 
             lastException = action.Should().Throw<ApiException>().Which;
+            CommonSteps.LastApiException = lastException;
         }
 
         [Step("The response is a bad request")]

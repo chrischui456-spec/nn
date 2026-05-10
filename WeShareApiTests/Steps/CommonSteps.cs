@@ -17,6 +17,7 @@ namespace Applications.Weshare.Steps
             StepsHelper.CapturedUsers.Clear();
             StepsHelper.CurrentLoggedInUser = null;
             StepsHelper.CurrentLoggedInPersonId = 0;
+            StepsHelper.PaymentRequestsByToPersonId.Clear();
         }
 
         [Step("Verify status code <Http>")]
