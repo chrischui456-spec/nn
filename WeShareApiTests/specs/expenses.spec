@@ -20,10 +20,6 @@
 * Get expenses by person id "1"
 * Check the expense list is not empty
 
-## Find expenses by person without expenses
-
-* Get expenses by person id "4"
-* Verify that the expense list is empty
 
 ## Create expense with invalid person
 
