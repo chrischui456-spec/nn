@@ -14,6 +14,9 @@ namespace Applications.Weshare.Steps
         public void BeforeScenario()
         {
             LastApiException = null;
+            StepsHelper.CapturedUsers.Clear();
+            StepsHelper.CurrentLoggedInUser = null;
+            StepsHelper.CurrentLoggedInPersonId = 0;
         }
 
         [Step("Verify status code <Http>")]

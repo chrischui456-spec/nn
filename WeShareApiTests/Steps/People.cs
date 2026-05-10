@@ -47,6 +47,8 @@ namespace Applications.Weshare.Steps
         {
             var loginDTO = new LoginDTO(email: email);
             person = _people.Login(loginDTO);
+            StepsHelper.CurrentLoggedInUser = person;
+            StepsHelper.CurrentLoggedInPersonId = StepsHelper.GetPersonIdForEmail(email);
         }
 
         [Step("The user is logged in successfully")]
@@ -56,7 +58,12 @@ namespace Applications.Weshare.Steps
             person.Email.Should().NotBeNullOrEmpty();
         }
 
-       
+        [Step("Capture logged in user as <name>")]
+        public void CaptureLoggedInUserAs(string name)
+        {
+            person.Should().NotBeNull("A user must be logged in before capturing");
+            StepsHelper.CapturedUsers[name] = person;
+        }
         [Step("Login with empty email")]
         public void LoginWithEmptyEmail()
         {

@@ -34,7 +34,7 @@ namespace Applications.Weshare.Steps
         {
             var paymentRequestId = StepsHelper.LastCreatedPaymentRequestId;
             var expenseId = StepsHelper.LastCreatedExpenseId;
-            var payingPersonId = 3;
+            var payingPersonId = StepsHelper.CurrentLoggedInPersonId > 0 ? StepsHelper.CurrentLoggedInPersonId : 3;
             NewPaymentDTO newPaymentDTO = new NewPaymentDTO(
                 expenseId: expenseId,
                 paymentRequestId: paymentRequestId,
@@ -48,7 +48,7 @@ namespace Applications.Weshare.Steps
         {
             var paymentRequestId = StepsHelper.LastCreatedPaymentRequestId;
             var expenseId = StepsHelper.LastCreatedExpenseId;
-            var payingPersonId = 3;
+            var payingPersonId = StepsHelper.CurrentLoggedInPersonId > 0 ? StepsHelper.CurrentLoggedInPersonId : 3;
             NewPaymentDTO newPaymentDTO = new NewPaymentDTO(
                 expenseId: expenseId,
                 paymentRequestId: paymentRequestId,
