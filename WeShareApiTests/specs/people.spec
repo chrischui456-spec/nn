@@ -1,4 +1,4 @@
-# People API
+# People
 
 ## Get all people returns a successful response
 * Get all people

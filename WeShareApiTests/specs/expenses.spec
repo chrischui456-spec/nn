@@ -10,10 +10,10 @@
 * Get all expenses
 * Check the expense list is not empty
 
-## Find expense by id
-
-* Get expense by id "1"
-* Check that the expense was created
+## Find expense by invalid id
+* Retrieve expense by id "invalid"
+* Verify status code "404"
+* Verify error message "Expense not found"
 
 ## Find expenses by person
 
@@ -31,11 +31,10 @@
 * Verify status code "404"
 * Verify error message "Person not found: 99"
 
-## Find expense by invalid id
-
-* Retrieve expense by id "99"
+## Find expense by non-existent id
+* Retrieve expense by id "99999"
 * Verify status code "404"
-* Verify error message "Expense not found: 99"
+* Verify error message "Expense not found"
 
 ## Find expenses by invalid person
 

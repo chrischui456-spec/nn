@@ -111,17 +111,19 @@ namespace Applications.Weshare.Steps
         [Step("Retrieve expense by id <id>")]
         public void RetrieveExpenseById(string id)
         {
-            int actualId;
-            if (id.Trim().ToLower() == "invalid")
+            int actualId = id.Trim().ToLower() == "invalid"
+                ? StepsHelper.LastCreatedExpenseId + 9999
+                : int.Parse(id);
+
+            try
             {
-                actualId = StepsHelper.LastCreatedExpenseId + 9999;
+                expenseDTO = _expenses.FindExpenseById(actualId);
+                CommonSteps.LastApiException = null;
             }
-            else
+            catch (ApiException ex)
             {
-                actualId = int.Parse(id);
+                CommonSteps.LastApiException = ex;
             }
-            Action action = () => _expenses.FindExpenseById(actualId);
-            CommonSteps.LastApiException = action.Should().Throw<ApiException>().Which;
         }
 
 
@@ -141,6 +143,8 @@ namespace Applications.Weshare.Steps
             expenseDTO.NettAmount.Should().Be(amount);
 
         }
+
+        
 
     }
 }

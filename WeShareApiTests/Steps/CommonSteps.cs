@@ -9,7 +9,7 @@ namespace Applications.Weshare.Steps
     {
         public static ApiException LastApiException { get; set; }
 
-        // ✅ IMPORTANT: Reset state between scenarios
+
         [BeforeScenario]
         public void BeforeScenario()
         {
