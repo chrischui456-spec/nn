@@ -1,0 +1,10 @@
+10-05-2026 16:50:02.947 [Gauge] [DEBUG] Created gauge_screenshots_dir at /workspaces/nn/WeshareGuiTests/.gauge/screenshots
+10-05-2026 16:50:02.960 [Gauge] [DEBUG] Plugin dotnet is already installed.
+10-05-2026 16:50:02.961 [Gauge] [DEBUG] Parsing started.
+10-05-2026 16:50:02.962 [Gauge] [DEBUG] Started concepts parsing.
+10-05-2026 16:50:02.963 [Gauge] [ERROR] No such file or directory: /workspaces/nn/WeshareGuiTests/specs
+10-05-2026 16:51:10.434 [Gauge] [DEBUG] Created gauge_screenshots_dir at /workspaces/nn/WeshareGuiTests/.gauge/screenshots
+10-05-2026 16:51:10.434 [Gauge] [DEBUG] Plugin dotnet is already installed.
+10-05-2026 16:51:10.435 [Gauge] [DEBUG] Parsing started.
+10-05-2026 16:51:10.435 [Gauge] [DEBUG] Started concepts parsing.
+10-05-2026 16:51:10.436 [Gauge] [ERROR] No such file or directory: /workspaces/nn/WeshareGuiTests/specs
